@@ -72,7 +72,6 @@ public class EmailAttachmentReceiver {
 								allPdfStream.add(pdfStream);
 							} finally {
 								// releases system resources associated with
-								// this stream
 								if (pdfStream != null)
 									pdfStream.close();
 							}

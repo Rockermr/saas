@@ -43,33 +43,30 @@ public class App {
 				}
 
 				List<String> extractedData = null;
-				
-					try {
 
-						extractedData = (List<String>) pdfText.pdfExtractor(allPdfStream);
-						if(extractedData.size()>0)
-						{
-							System.out.println("Extracting PDF and Inserting Data into Database...");
+				try {
+
+					extractedData = (List<String>) pdfText.pdfExtractor(allPdfStream);
+					if (extractedData.size() > 0) {
+						System.out.println("Extracting PDF and Inserting Data into Database...");
 
 						for (int i = 0; i < extractedData.size(); i = i + 5) {
 							data.insert(extractedData.subList(i, i + 5));
 						}
-						}
-						else
-						{
-							System.out.println("No New Attachment Found!");
-						}
-						
-					} catch (IOException | InterruptedException e) {
-						System.out.println("Error in extracting PDF");
-					} catch (SQLException e) {
-						System.out.println("Error in Inserting Data into Database or Data Already Exist in Database!");
+					} else {
+						System.out.println("No New Attachment Found!");
 					}
 
-					finally {
-						extractedData = null;
-					}
-				 
+				} catch (IOException | InterruptedException e) {
+					System.out.println("Error in extracting PDF");
+				} catch (SQLException e) {
+					System.out.println("Error in Inserting Data into Database or Data Already Exist in Database!");
+				}
+
+				finally {
+					extractedData = null;
+				}
+
 				break;
 			case 2:
 				try {
